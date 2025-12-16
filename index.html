@@ -1,0 +1,255 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>TechAgency — Build. Scale. Innovate.</title>
+  <meta name="description" content="Product strategy, scalable engineering and design that converts." />
+  <style>
+    :root{
+      --bg:#f8fafc;--card:#ffffff;--muted:#6b7280;--accent:#4f46e5;--radius:14px;--container:1200px
+    }
+    *{box-sizing:border-box}
+    body{margin:0;font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial;line-height:1.4;color:#0f172a;background:var(--bg)}
+    .container{max-width:var(--container);margin:0 auto;padding:28px}
+
+    /* NAV */
+    header{background:rgba(255,255,255,0.7);backdrop-filter: blur(6px);border-bottom:1px solid #e6eef6;position:sticky;top:0;z-index:50}
+    .nav-inner{display:flex;align-items:center;justify-content:space-between;gap:16px}
+    .brand{display:flex;align-items:center;gap:12px}
+    .logo{width:48px;height:48px;border-radius:10px;background:linear-gradient(135deg,#4f46e5,#06b6d4);display:flex;align-items:center;justify-content:center;color:white;font-weight:700}
+    nav a{margin-left:18px;color:var(--muted);text-decoration:none;font-weight:600}
+    nav a:hover{color:#0b1220}
+    .cta{border-radius:10px;padding:8px 14px;background:linear-gradient(90deg,#4f46e5,#06b6d4);color:white;border:none;font-weight:700;cursor:pointer}
+    .menu-btn{display:none;padding:8px;background:#eef2ff;border-radius:8px;border:0}
+
+    /* HERO */
+    .hero{display:grid;grid-template-columns:1fr 480px;gap:28px;align-items:center;padding:48px 0}
+    .eyebrow{display:inline-block;background:#eef2ff;color:#4338ca;padding:6px 10px;border-radius:999px;font-weight:700;font-size:13px}
+    h1{font-size:40px;margin:14px 0;color:#0f172a}
+    p.lead{color:var(--muted);font-size:18px}
+    .buttons{margin-top:18px;display:flex;gap:12px}
+    .btn-outline{padding:10px 14px;border-radius:10px;border:1px solid #e6eef6;background:white;cursor:pointer}
+
+    .stat-grid{display:flex;gap:20px;margin-top:22px;color:#0b1220}
+    .stat{background:linear-gradient(180deg,rgba(255,255,255,0.8),white);padding:12px;border-radius:10px;border:1px solid #eef2ff}
+
+    /* Card image */
+    .mock-card{background:var(--card);border-radius:16px;padding:0;box-shadow:0 8px 28px rgba(15,23,42,0.06);overflow:hidden;border:1px solid #eef2ff}
+    .mock-card img{width:100%;height:260px;object-fit:cover;display:block}
+    .mock-card .meta{padding:18px}
+
+    /* Sections */
+    section{margin-top:48px}
+    .grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+    .card{background:var(--card);padding:18px;border-radius:12px;border:1px solid #eef2ff}
+
+    /* Work */
+    .work-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:18px}
+    .work-item img{width:100%;height:160px;object-fit:cover;border-radius:8px}
+
+    /* Team */
+    .team-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+    .avatar{width:96px;height:96px;border-radius:999px;background:#f1f5f9;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:28px;margin:0 auto}
+
+    /* Contact */
+    .contact-grid{display:grid;grid-template-columns:1fr 360px;gap:20px}
+    form input,form textarea,form select{width:100%;padding:10px;border-radius:10px;border:1px solid #e6eef6;background:white;font-size:14px}
+    .form-actions{display:flex;gap:10px;align-items:center}
+
+    footer{margin-top:48px;padding:26px 0;border-top:1px solid #eef2ff;background:white}
+
+    /* Responsive */
+    @media (max-width:980px){
+      .hero{grid-template-columns:1fr;}
+      .work-grid{grid-template-columns:repeat(2,1fr)}
+      .team-grid{grid-template-columns:repeat(2,1fr)}
+      nav{display:none}
+      .menu-btn{display:inline-block}
+    }
+    @media (max-width:640px){
+      .grid-3{grid-template-columns:1fr}
+      .contact-grid{grid-template-columns:1fr}
+      .logo{width:40px;height:40px}
+      h1{font-size:28px}
+    }
+
+    /* tiny helpers */
+    .muted{color:var(--muted)}
+    .small{font-size:13px}
+
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container nav-inner">
+      <div class="brand">
+        <div class="logo">TA</div>
+        <div>
+          <div style="font-weight:700">RFZ Agency</div>
+          <div class="small muted">Build. Scale. Innovate.</div>
+        </div>
+      </div>
+      <nav id="nav-links">
+        <a href="#services">Services</a>
+        <a href="#work">Work</a>
+        <a href="#team">Team</a>
+        <a href="#contact">Contact</a>
+        <button class="cta" onclick="openQuote()">Get a Quote</button>
+      </nav>
+      <button class="menu-btn" id="menuBtn">Menu</button>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="hero">
+      <div>
+        <div class="eyebrow">Product • Design • Engineering</div>
+        <h1>We design and ship delightful software products.</h1>
+        <p class="lead">Product strategy, scalable engineering, and design that converts. We partner with startups and enterprises to build meaningful digital experiences.</p>
+        <div class="buttons">
+          <button class="cta" onclick="openProject()">Start a Project</button>
+          <button class="btn-outline" onclick="scrollToId('work')">See our work</button>
+        </div>
+
+        <div class="stat-grid">
+          <div class="stat"><div style="font-weight:800">120+</div><div class="small muted">Projects</div></div>
+          <div class="stat"><div style="font-weight:800">60%</div><div class="small muted">Avg Growth</div></div>
+          <div class="stat"><div style="font-weight:800">5 yrs</div><div class="small muted">Avg Tenure</div></div>
+        </div>
+      </div>
+
+      <div class="mock-card">
+        <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=1200&auto=format&fit=crop&ixlib=rb-4.0.3&s=placeholder" alt="product preview">
+        <div class="meta">
+          <h3 style="margin:0;font-size:18px">Product engineering — from prototype to scale</h3>
+          <p class="small muted">We help teams build resilient systems, ship fast, and iterate with real user data.</p>
+          <div style="margin-top:12px;display:flex;gap:12px;font-size:13px;color:var(--muted)">
+            <div>React &amp; Node</div>
+            <div>Cloud-native</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="services">
+      <h2>What we do</h2>
+      <p class="muted small">End-to-end services to design, build and operate modern products.</p>
+
+      <div class="grid-3" style="margin-top:18px">
+        <div class="card"><strong>Product Strategy</strong><div class="small muted" style="margin-top:8px">Roadmaps, discovery, user research.</div></div>
+        <div class="card"><strong>UX & Design</strong><div class="small muted" style="margin-top:8px">Interface design, prototypes, design systems.</div></div>
+        <div class="card"><strong>Engineering</strong><div class="small muted" style="margin-top:8px">Frontend, backend, cloud architecture.</div></div>
+        <div class="card"><strong>Data & AI</strong><div class="small muted" style="margin-top:8px">Analytics, ML prototypes, A/B testing.</div></div>
+        <div class="card"><strong>DevOps</strong><div class="small muted" style="margin-top:8px">CI/CD, infra as code, monitoring.</div></div>
+        <div class="card"><strong>Maintenance</strong><div class="small muted" style="margin-top:8px">SLA-backed support and feature delivery.</div></div>
+      </div>
+    </section>
+
+    <section id="work">
+      <div style="display:flex;justify-content:space-between;align-items:center">
+        <div>
+          <h2>Selected work</h2>
+          <p class="muted small">A mix of B2B platforms and consumer apps.</p>
+        </div>
+        <a class="small" href="#">View all projects →</a>
+      </div>
+
+      <div class="work-grid">
+        <article class="work-item card"><img src="https://picsum.photos/seed/work1/800/400" alt="work1"><h4 style="margin-top:8px">Project 1 — SaaS platform</h4><div class="small muted" style="margin-top:6px">Complex integrations, realtime sync, delightful UX.</div><div style="margin-top:10px;font-size:13px;color:var(--muted)">Role: Engineering • Timeline: 6 months</div></article>
+        <article class="work-item card"><img src="https://picsum.photos/seed/work2/800/400" alt="work2"><h4 style="margin-top:8px">Project 2 — Mobile app</h4><div class="small muted" style="margin-top:6px">Growth-focused onboarding and retention loops.</div><div style="margin-top:10px;font-size:13px;color:var(--muted)">Role: Product • Timeline: 4 months</div></article>
+        <article class="work-item card"><img src="https://picsum.photos/seed/work3/800/400" alt="work3"><h4 style="margin-top:8px">Project 3 — Marketplace</h4><div class="small muted" style="margin-top:6px">Payments, search, and trust systems.</div><div style="margin-top:10px;font-size:13px;color:var(--muted)">Role: Full-stack • Timeline: 8 months</div></article>
+      </div>
+    </section>
+
+    <section id="team">
+      <h2>Leadership</h2>
+      <p class="muted small">Meet the team shipping products every day.</p>
+      <div class="team-grid" style="margin-top:18px">
+        <div class="card" style="text-align:center"><div class="avatar">P</div><div style="margin-top:10px;font-weight:700">Prince Kumar Diwedi</div><div class="small muted">Head of Product</div></div>
+        <div class="card" style="text-align:center"><div class="avatar">G</div><div style="margin-top:10px;font-weight:700">Gyanshu</div><div class="small muted">CTO</div></div>
+        <div class="card" style="text-align:center"><div class="avatar">A</div><div style="margin-top:10px;font-weight:700">Anirudh</div><div class="small muted">Design Lead</div></div>
+        <div class="card" style="text-align:center"><div class="avatar">S</div><div style="margin-top:10px;font-weight:700">Shivam Kumar</div><div class="small muted">Sweeper</div></div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div style="display:flex;align-items:center;justify-content:space-between;gap:18px">
+        <div style="flex:1">
+          <h2>Let's build something together</h2>
+          <p class="muted small">Tell us about your project — we'll get back within 48 hours.</p>
+          <div style="margin-top:18px;max-width:640px">
+            <form id="contactForm">
+              <input type="text" id="name" placeholder="Your name" required style="margin-bottom:10px"><br>
+              <input type="email" id="email" placeholder="Email" required style="margin-bottom:10px"><br>
+              <input type="text" id="company" placeholder="Company (optional)" style="margin-bottom:10px"><br>
+              <textarea id="message" rows="5" placeholder="Project brief" style="margin-bottom:10px"></textarea>
+              <div class="form-actions"><button type="submit" class="cta">Send message</button><button type="button" class="btn-outline" onclick="scheduleCall()">Schedule a call</button></div>
+            </form>
+          </div>
+        </div>
+
+        <aside class="card" style="width:320px">
+          <h4 style="margin:0">Contact</h4>
+          <div style="margin-top:12px;color:var(--muted);font-size:14px">
+            <div>rfzmarketing@gmail.com</div>
+            <div style="margin-top:8px">+91 79038 45840</div>
+            <div style="margin-top:10px;font-size:12px;color:#9aa4b2">Office — Mumbai, India</div>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <footer>
+      <div class="container" style="display:flex;align-items:center;justify-content:space-between;gap:12px">
+        <div style="color:var(--muted);font-size:14px">©️ <span id="year"></span> RFZ. All rights reserved.</div>
+        <div style="color:var(--muted);font-size:14px"><a href="#">Privacy</a> · <a href="#">Terms</a> · <a href="#">Careers</a></div>
+      </div>
+    </footer>
+  </main>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Mobile menu toggle
+    const menuBtn = document.getElementById('menuBtn');
+    const nav = document.getElementById('nav-links');
+    menuBtn && menuBtn.addEventListener('click', ()=>{
+      if(nav.style.display === 'block') nav.style.display = '';
+      else nav.style.display = 'block';
+    });
+
+    function scrollToId(id){
+      document.getElementById(id).scrollIntoView({behavior:'smooth'});
+    }
+
+    function openQuote(){
+      alert('Open pricing / quote modal (replace with your modal implementation)');
+    }
+    function openProject(){
+      scrollToId('contact');
+      document.getElementById('name')?.focus();
+    }
+    function scheduleCall(){
+      alert('Scheduling flow — integrate Calendly or similar.');
+    }
+
+    // Simple form handler (replace with real endpoint)
+    document.getElementById('contactForm').addEventListener('submit', function(e){
+      e.preventDefault();
+      const name = document.getElementById('name').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const company = document.getElementById('company').value.trim();
+      const message = document.getElementById('message').value.trim();
+      if(!name || !email || !message){
+        alert('Please fill name, email and project brief.');
+        return;
+      }
+      // Mock submit
+      console.log({name,email,company,message});
+      alert('Thanks ' + name + '! Your message has been received. We will reply within 48 hours.');
+      this.reset();
+    });
+  </script>
+</body>
+</html>
