@@ -77,6 +77,15 @@
     /* tiny helpers */
     .muted{color:var(--muted)}
     .small{font-size:13px}
+    /*css for dark mode*/
+    .dark {
+  --bg:#0f172a;
+  --card:#1e293b;
+  --muted:#cbd5f5;
+  --accent:#818cf8;
+  color:#f8fafc;
+}
+
 
   </style>
 </head>
@@ -96,6 +105,8 @@
         <a href="#team">Team</a>
         <a href="#contact">Contact</a>
         <button class="cta" onclick="openQuote()">Get a Quote</button>
+        <button class="btn-outline" onclick="toggleTheme()">Dark Mode</button>
+
       </nav>
       <button class="menu-btn" id="menuBtn">Menu</button>
     </div>
@@ -156,7 +167,29 @@
       </div>
 
       <div class="work-grid">
-        <article class="work-item card"><img src="https://picsum.photos/seed/work1/800/400" alt="work1"><h4 style="margin-top:8px">Project 1 — SaaS platform</h4><div class="small muted" style="margin-top:6px">Complex integrations, realtime sync, delightful UX.</div><div style="margin-top:10px;font-size:13px;color:var(--muted)">Role: Engineering • Timeline: 6 months</div></article>
+      <article class="work-item card">
+  <img src="https://picsum.photos/seed/work1/800/400" alt="work1">
+  <h4 style="margin-top:8px">Project 1 — SaaS platform</h4>
+
+  <div class="small muted" style="margin-top:6px">
+    Base Cost: ₹800
+  </div>
+
+  <div class="small muted">
+    Add-ons Cost: ₹400
+  </div>
+
+  <div style="margin-top:10px;font-size:14px;font-weight:600">
+    Total: ₹<span class="total">1200</span>
+  </div>
+
+  <button class="btn-outline" onclick="applyDiscount(1200)">
+    Check Discount
+  </button>
+
+  <div class="small muted" id="discountResult"></div>
+</article>
+
         <article class="work-item card"><img src="https://picsum.photos/seed/work2/800/400" alt="work2"><h4 style="margin-top:8px">Project 2 — Mobile app</h4><div class="small muted" style="margin-top:6px">Growth-focused onboarding and retention loops.</div><div style="margin-top:10px;font-size:13px;color:var(--muted)">Role: Product • Timeline: 4 months</div></article>
         <article class="work-item card"><img src="https://picsum.photos/seed/work3/800/400" alt="work3"><h4 style="margin-top:8px">Project 3 — Marketplace</h4><div class="small muted" style="margin-top:6px">Payments, search, and trust systems.</div><div style="margin-top:10px;font-size:13px;color:var(--muted)">Role: Full-stack • Timeline: 8 months</div></article>
       </div>
@@ -250,6 +283,27 @@
       alert('Thanks ' + name + '! Your message has been received. We will reply within 48 hours.');
       this.reset();
     });
+    //dark mode
+    function toggleTheme(){
+  document.body.classList.toggle('dark');
+}
+
+function applyDiscount(totalCost) {
+  let finalAmount = totalCost;
+  let discount = 0;
+
+  if (totalCost > 1000) {
+    discount = totalCost * 0.10;
+    finalAmount = totalCost - discount;
+    document.getElementById("discountResult").innerHTML =
+      "🎉 Discount Applied: 10% <br> Final Price: ₹" + finalAmount;
+  } else {
+    document.getElementById("discountResult").innerHTML =
+      "No discount available. Final Price: ₹" + totalCost;
+  }
+}
+
+
   </script>
 </body>
 </html>
